@@ -97,9 +97,9 @@ handleClick(evt) {
   this.placeInTable(y, x);
 
   // check for win
-  if (this.checkForWin()) {
-    return this.endGame(`Player ${this.currPlayer} won!`);
-  }
+ // if (this.checkForWin()) {
+ //   return this.endGame(`Player ${this.currPlayer} won!`);
+ // }
 
   // check for tie
   if (this.board.every(row => row.every(cell => cell))) {
