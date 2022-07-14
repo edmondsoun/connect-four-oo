@@ -1,3 +1,5 @@
+"use strict";
+
 /** Connect Four
  *
  * Player 1 and 2 alternate turns. On each turn, a piece is dropped down a
@@ -5,21 +7,38 @@
  * board fills (tie)
  */
 
-const WIDTH = 7;
-const HEIGHT = 6;
+ const WIDTH = 7;
+ const HEIGHT = 6;
+ 
+ let currPlayer = 1; // active player: 1 or 2
+ let board = []; // array of rows, each row is array of cells  (board[y][x])
 
-let currPlayer = 1; // active player: 1 or 2
-let board = []; // array of rows, each row is array of cells  (board[y][x])
 
-/** makeBoard: create in-JS board structure:
- *   board = array of rows, each row is array of cells  (board[y][x])
- */
-
-function makeBoard() {
-  for (let y = 0; y < HEIGHT; y++) {
-    board.push(Array.from({ length: WIDTH }));
+class Game {
+  constructor(y, x){
+    this.y = y;
+    this.x = x;
+    this.makeBoard(x,y);
   }
+
+  makeBoard() {
+    for (let y = 0; y < this.y; y++) {
+      board.push(Array.from({ length: this.x }));
+    }
+  } 
+
+
+
+
 }
+
+new Game(6, 7);
+
+
+
+----
+
+
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
@@ -149,3 +168,5 @@ function checkForWin() {
 
 makeBoard();
 makeHtmlBoard();
+
+
