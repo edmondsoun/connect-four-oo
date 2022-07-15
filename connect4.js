@@ -18,6 +18,7 @@ class Game {
     this.board = [];
     this.makeBoard();
     this.makeHtmlBoard();
+    this.winner = false;
   }
 
   makeBoard() {
@@ -87,6 +88,9 @@ handleClick(evt) {
   // get x from ID of clicked cell
   const x = +evt.target.id;
 
+  // check for winner
+  if(this.winner) return;
+
   // get next spot in column (if none, ignore click)
   const y = this.findSpotForCol(x);
   if (y === null) {
@@ -99,7 +103,8 @@ handleClick(evt) {
 
   // check for win
  if (this.checkForWin()) {
-  document.getElementById('column-top').removeEventListener('click', this.checkForWin(), true);
+  this.winner = true;
+  //document.getElementById('column-top').removeEventListener('click');
   return this.endGame(`Player ${this.currPlayer} won!`);
  }
 
