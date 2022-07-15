@@ -99,7 +99,8 @@ handleClick(evt) {
 
   // check for win
  if (this.checkForWin()) {
-   return this.endGame(`Player ${this.currPlayer} won!`);
+  document.getElementById('column-top').removeEventListener('click', this.checkForWin(), true);
+  return this.endGame(`Player ${this.currPlayer} won!`);
  }
 
   // check for tie
@@ -168,6 +169,6 @@ checkForWin() {
 
 }
 
-const button = document.getElementById("button");
-button.addEventListener("click", new Game(6,7));
 
+const button = document.getElementById("button");
+button.addEventListener("click", () => new Game(6,7));
